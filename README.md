@@ -3,6 +3,13 @@
 #### About
 Simple project to check integration between android and Firebase Cloud Message
 
+#### Push
+To send push, run the command below:
+```
+$ sh push.sh
+```
+And notification appears like magic
+
 #### LICENSE
 ```
 MIT License
