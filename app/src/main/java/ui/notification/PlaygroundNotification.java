@@ -29,18 +29,17 @@ import static com.jgabrielfreitas.firebase.push.R.string.action_reply;
 public class PlaygroundNotification {
 
   private static final String NOTIFICATION_TAG = "Playground";
+    private static final String TAG = "push";
 
-  public static void notify(final Context context, RemoteMessage message) {
-    final Resources res = context.getResources();
+    public static void notify(final Context context, RemoteMessage message) {
 
+final Resources res = context.getResources();
     final Bitmap picture = decodeResource(res, ic_stat_playground);
-
     RemoteMessage.Notification notification = message.getNotification();
 
     //final String ticker = exampleString;
-    final String title = notification.getTitle();
-    final String text  = notification.getBody();
-
+    final String title = "Portal Stone";
+    final String text  = message.getData().get("alert");
     for (Map.Entry<String, String> stringStringEntry : message.getData().entrySet())
       Log.e(NOTIFICATION_TAG, String.format("%s = %s", stringStringEntry.getKey(), stringStringEntry.getValue()));
 
@@ -95,10 +94,6 @@ public class PlaygroundNotification {
     }
   }
 
-  /**
-   * Cancels any notifications of this type previously shown using
-   * {@link #notify(Context, String, int)}.
-   */
   @TargetApi(ECLAIR) public static void cancel(final Context context) {
     final NotificationManager nm = (NotificationManager) context.getSystemService(
         NOTIFICATION_SERVICE);

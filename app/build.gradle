@@ -3,7 +3,7 @@ apply plugin: 'kotlin-android'
 
 android {
   compileSdkVersion 25
-  buildToolsVersion "25.0.2"
+  buildToolsVersion "25.0.3"
   defaultConfig {
     applicationId "com.jgabrielfreitas.firebase.push"
     minSdkVersion 16
@@ -29,16 +29,15 @@ dependencies {
   androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
     exclude group: 'com.android.support', module: 'support-annotations'
   })
-  compile 'com.android.support:appcompat-v7:25.3.0'
-  compile 'com.android.support.constraint:constraint-layout:1.0.2'
   compile 'com.google.firebase:firebase-messaging:10.2.1'
-  compile 'com.android.support:support-v4:25.3.0'
   compile 'com.github.jgabrielfreitas:Bases:0.0.1'
+  compile 'com.google.android.gms:play-services-gcm:10.2.1'
   testCompile 'junit:junit:4.12'
   compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
   kapt 'com.jakewharton:butterknife:7.0.1'
+  compile('com.exacttarget.etpushsdk:etsdk:4.8.4') {
+     exclude module: 'android-beacon-library' //remove to use Proximity messaging
+     exclude module: 'play-services-location' //remove to use Geofence or Proximity messaging
+  }
 }
 apply plugin: 'com.google.gms.google-services'
-repositories {
-  mavenCentral()
-}
